@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/views/home_view.dart';
 import 'package:store_app/views/login_view.dart';
 import 'package:store_app/views/register_view.dart';
 
@@ -17,7 +18,7 @@ class StoreApp extends StatelessWidget {
         LoginView.id: (context) => LoginView(),
         RegisterView.id: (context) => RegisterView(),
       },
-      home: LoginView(),
+      home: HomeView(),
     );
   }
 }
