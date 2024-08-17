@@ -2,10 +2,11 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:store_app/consts%20copy.dart';
-import 'package:store_app/cubit/cubit/login_cubit.dart';
+import 'package:store_app/consts.dart';
+import 'package:store_app/cubit/login_cubit/login_cubit.dart';
 import 'package:store_app/views/register_view.dart';
 import 'package:store_app/widget/custom_button.dart';
+import 'package:store_app/widget/custom_navigation_bar.dart';
 import 'package:store_app/widget/custom_text_field.dart';
 import 'package:store_app/widget/qusetion_inauth.dart';
 
@@ -32,6 +33,10 @@ class _LoginViewState extends State<LoginView> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => CustomBottomNavigationBar()));
             Fluttertoast.showToast(
                 msg: state.loginModel.message,
                 toastLength: Toast.LENGTH_LONG,

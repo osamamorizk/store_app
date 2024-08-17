@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Models/category_model.dart';
-import 'package:store_app/consts%20copy.dart';
+import 'package:store_app/consts.dart';
 import 'package:store_app/services/get_categories.dart';
 import 'package:store_app/views/products_from_category.dart';
 import 'package:store_app/widget/category_name.dart';

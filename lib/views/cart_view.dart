@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/consts%20copy.dart';
+import 'package:store_app/consts.dart';
 
 class CartView extends StatelessWidget {
   const CartView({

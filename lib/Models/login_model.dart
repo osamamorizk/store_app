@@ -1,15 +1,15 @@
-class LoginModel {
+class AuthModel {
   final bool status;
   final String message;
   final Data? data;
 
-  LoginModel({
+  AuthModel({
     required this.status,
     required this.message,
     required this.data,
   });
 
-  factory LoginModel.fromJson(json) => LoginModel(
+  factory AuthModel.fromJson(json) => AuthModel(
         status: json["status"],
         message: json["message"],
         data: Data.fromJson(json["data"]),

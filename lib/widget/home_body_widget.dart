@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/consts%20copy.dart';
+import 'package:store_app/consts.dart';
 import 'package:store_app/widget/category_listview.dart';
 import 'package:store_app/widget/custom_gridview.dart';
 
@@ -17,7 +17,7 @@ class HomeBodyWidget extends StatelessWidget {
         title: const Text(
           'Welcome to our store !',
           style: TextStyle(
-              fontSize: 24, color: kcolor, fontWeight: FontWeight.bold),
+              fontSize: 22, color: kcolor, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(

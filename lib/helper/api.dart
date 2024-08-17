@@ -31,6 +31,7 @@ class Api {
     // };
 
     dio.options = BaseOptions(
+      baseUrl: 'https://student.valuxapps.com/api/',
       headers: {
         'lang': 'en',
         'Authorization': token,

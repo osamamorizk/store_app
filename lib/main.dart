@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/bloc_opserver.dart';
+import 'package:store_app/consts.dart';
+import 'package:store_app/helper/shared_pref.dart';
 import 'package:store_app/services/get_categories.dart';
 import 'package:store_app/views/about_store.dart';
 import 'package:store_app/views/cart_view.dart';
@@ -9,11 +11,15 @@ import 'package:store_app/views/home_view.dart';
 import 'package:store_app/views/login_view.dart';
 import 'package:store_app/views/products_from_category.dart';
 import 'package:store_app/views/register_view.dart';
+import 'package:store_app/widget/custom_navigation_bar.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CahedStorge.cacheIntialization();
   Bloc.observer = SimpleBlocObserver();
+  token = CahedStorge.getFromCache(key: 'token');
+  print(token);
   runApp(StoreApp());
-  GetCategories().getCategories();
 }
 
 class StoreApp extends StatelessWidget {
@@ -31,7 +37,9 @@ class StoreApp extends StatelessWidget {
         AboutStore.id: (context) => AboutStore(),
         ContactUs.id: (context) => ContactUs(),
       },
-      home: LoginView(),
+      home: token != null && token != ''
+          ? CustomBottomNavigationBar()
+          : LoginView(),
     );
   }
 }
