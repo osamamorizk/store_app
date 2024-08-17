@@ -5,18 +5,30 @@ import 'package:store_app/widget/custom_button.dart';
 import 'package:store_app/widget/custom_text_field.dart';
 import 'package:store_app/widget/qusetion_inauth.dart';
 
-class LoginView extends StatelessWidget {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
   static String id = 'loginPage';
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  TextEditingController emailController = TextEditingController();
+
+  TextEditingController passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 150,
+            ),
             const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -33,13 +45,21 @@ class LoginView extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const CustomTextField(
+            CustomTextField(
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
               hint: 'Email',
             ),
             const SizedBox(
               height: 20,
             ),
-            const CustomTextField(
+            CustomTextField(
+              suffixIcon: IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.visibility),
+              ),
+              controller: passController,
+              keyboardType: TextInputType.visiblePassword,
               hint: 'Password',
             ),
             const SizedBox(

@@ -28,7 +28,7 @@ class StoreApp extends StatelessWidget {
         AboutStore.id: (context) => AboutStore(),
         ContactUs.id: (context) => ContactUs(),
       },
-      home: HomeView(),
+      home: LoginView(),
     );
   }
 }
