@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/consts%20copy.dart';
 import 'package:store_app/views/register_view.dart';
 import 'package:store_app/widget/custom_button.dart';
 import 'package:store_app/widget/custom_text_field.dart';
@@ -12,7 +13,7 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -22,7 +23,7 @@ class LoginView extends StatelessWidget {
                 Text(
                   'Sign in',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: kcolor,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),

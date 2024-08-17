@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/consts%20copy.dart';
 import 'package:store_app/widget/custom_button.dart';
 import 'package:store_app/widget/custom_text_field.dart';
 import 'package:store_app/widget/qusetion_inauth.dart';
@@ -21,7 +22,7 @@ class RegisterView extends StatelessWidget {
                 Text(
                   'Register',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: kcolor,
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                   ),

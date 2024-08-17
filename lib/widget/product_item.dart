@@ -1,35 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/Models/product_model.dart';
+import 'package:store_app/widget/customPlusButton.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key});
-
+  const ProductItem({super.key, required this.productModel});
+  final ProductModel productModel;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 360,
-      width: 200,
-      child: const Column(
+      decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(.1),
+          borderRadius: BorderRadius.circular(12)),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image(
-            height: 300,
-            width: 200,
+            fit: BoxFit.fill,
+            // width: 190,
+            height: 170,
             image: NetworkImage(
-              'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGYtbXUxNC10ZWQ2MTM1LWpqLWFldy1sLmpwZw.jpg',
+              productModel.image,
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Shampo',
-                style: TextStyle(fontSize: 20),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.only(top: 10, right: 8, left: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 16,
+                ),
+                Expanded(
+                  child: Text(
+                    textAlign: TextAlign.start,
+                    productModel.name,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
           ),
-          Text(
-            r'$250',
-            style: TextStyle(fontSize: 20),
+          Padding(
+            padding: EdgeInsets.only(bottom: 3, right: 8, left: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  r'$' ' ${productModel.price.toString()}',
+                  style: TextStyle(fontSize: 16),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 2),
+                  child: CustomPlusButton(
+                    icon: Icon(Icons.add),
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),
