@@ -4,7 +4,7 @@ import 'package:store_app/helper/api.dart';
 class GetCategories {
   Future<List<CategoryModel>> getCategories() async {
     Map<String, dynamic> json =
-        await Api().get('https://student.valuxapps.com/api/categories');
+        await Api().get(url: 'https://student.valuxapps.com/api/categories');
     List<dynamic> data = json['data']['data'];
 
     List<CategoryModel> categoryList = [];

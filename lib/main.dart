@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/bloc_opserver.dart';
 import 'package:store_app/services/get_categories.dart';
 import 'package:store_app/views/about_store.dart';
 import 'package:store_app/views/cart_view.dart';
@@ -9,6 +11,7 @@ import 'package:store_app/views/products_from_category.dart';
 import 'package:store_app/views/register_view.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   runApp(StoreApp());
   GetCategories().getCategories();
 }

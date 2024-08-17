@@ -4,7 +4,7 @@ import 'package:store_app/helper/api.dart';
 class GetAllProducts {
   Future<List<ProductModel>> getAllProducts() async {
     Map<String, dynamic> json =
-        await Api().get('https://student.valuxapps.com/api/products');
+        await Api().get(url: 'https://student.valuxapps.com/api/products');
     List data = json['data']['data'];
 
     List<ProductModel> productsList = [];

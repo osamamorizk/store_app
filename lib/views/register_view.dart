@@ -16,6 +16,7 @@ class _RegisterViewState extends State<RegisterView> {
   TextEditingController emailController = TextEditingController();
 
   TextEditingController passController = TextEditingController();
+  bool obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +46,7 @@ class _RegisterViewState extends State<RegisterView> {
                 height: 20,
               ),
               CustomTextField(
+                obscureText: false,
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 hint: 'Email',
@@ -53,9 +55,14 @@ class _RegisterViewState extends State<RegisterView> {
                 height: 20,
               ),
               CustomTextField(
+                obscureText: obscureText,
                 suffixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.visibility),
+                  onPressed: () {
+                    obscureText = !obscureText;
+                    setState(() {});
+                  },
+                  icon: Icon(
+                      obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
                 controller: passController,
                 keyboardType: TextInputType.visiblePassword,
