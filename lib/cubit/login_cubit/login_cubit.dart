@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:store_app/Models/Login_model.dart';
+import 'package:store_app/Models/auth_model.dart';
 import 'package:store_app/helper/api.dart';
 import 'package:store_app/helper/shared_pref.dart';
 
@@ -22,11 +22,12 @@ class LoginCubit extends Cubit<LoginState> {
         'password': password,
       },
     ).then((response) {
-      AuthModel loginModel = AuthModel.fromJson(response);
-      print(loginModel.data!.token);
+      print(response);
+      AuthModel authModel = AuthModel.fromJson(response);
+      print(authModel.data!.token);
       if (response['status'] == true) {
-        CahedStorge.insertToCache(key: 'token', value: loginModel.data!.token);
-        emit(LoginSuccess(loginModel: loginModel));
+        CahedStorge.insertToCache(key: 'token', value: authModel.data!.token);
+        emit(LoginSuccess(authModel: authModel));
       } else {
         emit(LoginFailure(errorMessage: 'Invalid creditional'));
       }

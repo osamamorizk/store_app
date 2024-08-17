@@ -6,9 +6,9 @@ sealed class LoginState {}
 final class LoginInitial extends LoginState {}
 
 final class LoginSuccess extends LoginState {
-  final AuthModel loginModel;
+  final AuthModel authModel;
 
-  LoginSuccess({required this.loginModel});
+  LoginSuccess({required this.authModel});
 }
 
 final class LoginLoading extends LoginState {}

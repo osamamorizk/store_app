@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/Models/product_model.dart';
+import 'package:store_app/widget/add_cart_button.dart';
 import 'package:store_app/widget/customPlusButton.dart';
 
 class CategoryItemWidget extends StatelessWidget {
@@ -13,8 +14,10 @@ class CategoryItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
+    return Container(
+      height: 90,
+      decoration:
+          BoxDecoration(border: Border.all(color: Colors.grey.withOpacity(.1))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -50,12 +53,7 @@ class CategoryItemWidget extends StatelessWidget {
               ],
             ),
           ),
-          const CustomPlusButton(
-            icon: Icon(Icons.add),
-          ),
-          const CustomPlusButton(
-            icon: Icon(Icons.remove),
-          ),
+          AddCartButton(),
         ],
       ),
     );

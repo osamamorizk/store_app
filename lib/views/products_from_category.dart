@@ -51,7 +51,7 @@ class _CategoryProuductsBodyState extends State<CategoryProuductsBody> {
                 return ListView.builder(
                   itemCount: products.length,
                   itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 2),
                     child: CategoryItemWidget(
                       productModel: products[index],
                       icon: const Icon(Icons.add),

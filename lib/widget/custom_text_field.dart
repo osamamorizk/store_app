@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       controller: controller,
       validator: (value) {
-        if (value == null) {
+        if (value!.isEmpty) {
           return 'Field is required';
         }
       },

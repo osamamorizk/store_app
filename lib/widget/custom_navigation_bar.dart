@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/views/cart_view.dart';
 import 'package:store_app/views/categories_view.dart';
 import 'package:store_app/views/profile_view.dart';
 import 'package:store_app/widget/home_body_widget.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
+  static String id = 'fjf';
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -16,6 +18,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   List<Widget> views = [
     HomeBodyWidget(),
     CategoriesView(),
+    CartView(),
     ProfileView(),
   ];
   @override
@@ -28,13 +31,15 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
             Radius.circular(16),
           ),
           child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               backgroundColor: Colors.blue[800],
-              elevation: 100,
+              elevation: 10,
               iconSize: 26,
               selectedFontSize: 16,
               unselectedFontSize: 15,
               // showUnselectedLabels: false,
               // showSelectedLabels: false,
+
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.grey,
               currentIndex: currentIndex,
@@ -56,6 +61,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                 //   icon: Icon(Icons.shopping_cart_outlined),
                 //   label: 'Cart',
                 // ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart_outlined),
+                  label: 'Cart',
+                ),
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person_outline_rounded),
                   label: 'Profile',

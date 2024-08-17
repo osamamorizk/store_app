@@ -33,12 +33,13 @@ class _LoginViewState extends State<LoginView> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => CustomBottomNavigationBar()));
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(
+                  builder: (context) => CustomBottomNavigationBar()),
+              (Route<dynamic> route) => false,
+            );
             Fluttertoast.showToast(
-                msg: state.loginModel.message,
+                msg: state.authModel.message,
                 toastLength: Toast.LENGTH_LONG,
                 gravity: ToastGravity.SNACKBAR,
                 timeInSecForIosWeb: 1,

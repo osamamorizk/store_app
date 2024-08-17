@@ -1,4 +1,5 @@
 class ProductModel {
+  final int id;
   final double price;
   final double oldPrice;
   final int discount;
@@ -10,6 +11,7 @@ class ProductModel {
   final bool inCart;
 
   ProductModel({
+    required this.id,
     required this.price,
     required this.oldPrice,
     required this.discount,
@@ -29,5 +31,6 @@ class ProductModel {
         description: json["description"],
         inFavorites: json["in_favorites"],
         inCart: json["in_cart"],
+        id: json['id'],
       );
 }
