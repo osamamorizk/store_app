@@ -41,6 +41,7 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   fluttertoast: ^8.2.8
   shared_preferences: ^2.3.2
+  modal_progress_hud_nsn: ^0.5.1
 
 dev_dependencies:
   flutter_test:

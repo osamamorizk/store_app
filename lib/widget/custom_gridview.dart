@@ -7,9 +7,7 @@ import 'package:store_app/services/get_all_products.dart';
 import 'package:store_app/widget/product_item.dart';
 
 class CustomGridView extends StatelessWidget {
-  const CustomGridView({
-    super.key,
-  });
+  const CustomGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
