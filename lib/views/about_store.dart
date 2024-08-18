@@ -21,21 +21,26 @@ class AboutStore extends StatelessWidget {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Spacer(
+              flex: 1,
+            ),
             Text(
               'Welcome to Our Store!',
               style: TextStyle(
                   fontSize: 28, color: kcolor, fontWeight: FontWeight.bold),
             ),
-            const Text(
+            Text(
               "Dive into a world of exclusive products and unbeatable deals. Whether you're searching for the latest trends, unique finds, or everyday essentials, we have something just for you. ",
               style: TextStyle(fontSize: 22, color: Colors.black),
-            )
+            ),
+            Spacer(
+              flex: 3,
+            ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:store_app/consts.dart';
+import 'package:store_app/helper/shared_pref.dart';
 import 'package:store_app/widget/category_listview.dart';
 import 'package:store_app/widget/custom_gridview.dart';
 
@@ -14,10 +15,12 @@ class HomeBodyWidget extends StatelessWidget {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         backgroundColor: Colors.white,
-        title: const Text(
-          'Welcome to our store !',
-          style: TextStyle(
-              fontSize: 22, color: kcolor, fontWeight: FontWeight.bold),
+        title: Text(
+          'Hello, ${CahedStorge.getFromCache(key: 'name')}',
+          style: const TextStyle(
+            fontSize: 22,
+            color: kcolor,
+          ),
         ),
       ),
       body: SingleChildScrollView(
@@ -37,10 +40,10 @@ class HomeBodyWidget extends StatelessWidget {
                   image: const AssetImage('assets/sale.png'),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -53,11 +56,11 @@ class HomeBodyWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               const SizedBox(height: 120, child: CategoryListView()),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
@@ -70,7 +73,7 @@ class HomeBodyWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 13,
               ),
               CustomGridView(),

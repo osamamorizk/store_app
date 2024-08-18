@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/helper/shared_pref.dart';
 import 'package:store_app/views/about_store.dart';
 import 'package:store_app/views/cart_view.dart';
 import 'package:store_app/views/contact_us.dart';
@@ -16,12 +17,19 @@ class ProfileView extends StatelessWidget {
           backgroundColor: Colors.blue.withOpacity(.2),
           radius: 55,
           child: Text(
-            'Name',
+            CahedStorge.getFromCache(key: 'name'),
             style: TextStyle(fontSize: 20, color: Colors.blue[900]),
           ),
         ),
         const SizedBox(
-          height: 45,
+          height: 25,
+        ),
+        Text(
+          CahedStorge.getFromCache(key: 'email'),
+          style: TextStyle(fontSize: 20, color: Colors.blue[900]),
+        ),
+        const SizedBox(
+          height: 35,
         ),
         ProfileElement(
           title: 'About Our Store',

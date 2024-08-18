@@ -33,6 +33,8 @@ class RegisterCubit extends Cubit<RegisterState> {
 
       if (response['status'] == true) {
         CahedStorge.insertToCache(key: 'token', value: authModel.data!.token);
+        CahedStorge.insertToCache(key: 'email', value: authModel.data!.email);
+        CahedStorge.insertToCache(key: 'name', value: authModel.data!.name);
 
         log(authModel.data!.token);
         emit(RegisterSuccess(authModel: authModel));

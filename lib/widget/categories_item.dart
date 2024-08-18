@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/Models/product_model.dart';
-import 'package:store_app/widget/add_cart_button.dart';
-import 'package:store_app/widget/customPlusButton.dart';
+import 'package:store_app/cubit/add_cubit/layout_cubit.dart';
 
 class CategoryItemWidget extends StatelessWidget {
   const CategoryItemWidget({
     super.key,
     required this.icon,
     required this.productModel,
+    this.onPressed,
   });
   final Widget icon;
   final ProductModel productModel;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<LayoutCubit>(context);
     return Container(
       height: 90,
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey.withOpacity(.1))),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey.withOpacity(.07))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -33,7 +36,7 @@ class CategoryItemWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 100,
+            width: 130,
             height: 100,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,13 +50,22 @@ class CategoryItemWidget extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 Text(
-                  productModel.price.toString(),
+                  r'$' ' ${productModel.price.toString()}',
                   style: TextStyle(fontSize: 16),
                 ),
               ],
             ),
           ),
-          AddCartButton(),
+          IconButton(
+            onPressed: onPressed,
+            icon: Icon(
+              cubit.productsId.contains(productModel.id.toString())
+                  ? Icons.remove_shopping_cart
+                  : Icons.add_shopping_cart,
+              size: 40,
+              color: Colors.black,
+            ),
+          ),
         ],
       ),
     );

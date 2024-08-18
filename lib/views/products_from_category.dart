@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:store_app/Models/category_model.dart';
 import 'package:store_app/Models/product_model.dart';
+import 'package:store_app/cubit/add_cubit/layout_cubit.dart';
 import 'package:store_app/services/get_products_by_categ_id.dart';
-import 'package:store_app/widget/custom_cart_item.dart';
+import 'package:store_app/widget/categories_item.dart';
 
 class ProductsFromCategory extends StatelessWidget {
   const ProductsFromCategory({super.key});
@@ -23,6 +26,7 @@ class CategoryProuductsBody extends StatefulWidget {
 class _CategoryProuductsBodyState extends State<CategoryProuductsBody> {
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<LayoutCubit>(context);
     final categoryModel =
         ModalRoute.of(context)?.settings.arguments as CategoryModel;
 
@@ -39,29 +43,49 @@ class _CategoryProuductsBodyState extends State<CategoryProuductsBody> {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: FutureBuilder(
-            future:
-                GetProductsByCategId().getProductsByCategId(categoryModel.id),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<ProductModel> products = snapshot.data!;
+      body: BlocConsumer<LayoutCubit, LayoutState>(
+        listener: (context, state) {
+          if (state is LayoutAddSuccess) {
+            Fluttertoast.showToast(
+                msg: 'Cart Updated',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          }
+        },
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: FutureBuilder(
+                future: GetProductsByCategId()
+                    .getProductsByCategId(categoryModel.id),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    List<ProductModel> products = snapshot.data!;
 
-                return ListView.builder(
-                  itemCount: products.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 2),
-                    child: CategoryItemWidget(
-                      productModel: products[index],
-                      icon: const Icon(Icons.add),
-                    ),
-                  ),
-                );
-              } else {
-                return Center(child: CircularProgressIndicator());
-              }
-            }),
+                    return ListView.builder(
+                      itemCount: products.length,
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: CategoryItemWidget(
+                          onPressed: () async {
+                            await cubit.addOrRemoveCart(
+                                id: products[index].id.toString());
+                          },
+                          productModel: products[index],
+                          icon: const Icon(Icons.add),
+                        ),
+                      ),
+                    );
+                  } else {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                }),
+          );
+        },
       ),
     );
   }

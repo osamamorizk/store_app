@@ -27,6 +27,7 @@ class CustomTextField extends StatelessWidget {
         if (value!.isEmpty) {
           return 'Field is required';
         }
+        return null;
       },
       decoration: InputDecoration(
         suffixIcon: suffixIcon,

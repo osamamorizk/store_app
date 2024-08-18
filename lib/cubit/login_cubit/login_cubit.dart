@@ -27,7 +27,11 @@ class LoginCubit extends Cubit<LoginState> {
       print(authModel.data!.token);
       if (response['status'] == true) {
         CahedStorge.insertToCache(key: 'token', value: authModel.data!.token);
-        emit(LoginSuccess(authModel: authModel));
+        CahedStorge.insertToCache(key: 'email', value: authModel.data!.email);
+        CahedStorge.insertToCache(key: 'name', value: authModel.data!.name);
+        emit(LoginSuccess(
+          authModel: authModel,
+        ));
       } else {
         emit(LoginFailure(errorMessage: 'Invalid creditional'));
       }
