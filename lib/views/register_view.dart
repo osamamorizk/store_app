@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:store_app/consts.dart';
 import 'package:store_app/cubit/register_cubit/register_cubit.dart';
+import 'package:store_app/views/login_view.dart';
 import 'package:store_app/widget/custom_button.dart';
 import 'package:store_app/widget/custom_navigation_bar.dart';
 import 'package:store_app/widget/custom_text_field.dart';
@@ -34,8 +35,7 @@ class _RegisterViewState extends State<RegisterView> {
         listener: (context, state) {
           if (state is RegisterSuccess) {
             Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(
-                  builder: (context) => CustomBottomNavigationBar()),
+              MaterialPageRoute(builder: (context) => LoginView()),
               (Route<dynamic> route) => false,
             );
             Fluttertoast.showToast(

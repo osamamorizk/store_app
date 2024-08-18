@@ -72,8 +72,16 @@ class _LoginViewState extends State<LoginView> {
                 child: ListView(
                   // mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 150,
+                    const SizedBox(
+                      height: 90,
+                    ),
+                    const Image(
+                      height: 100,
+                      width: 100,
+                      image: const AssetImage('assets/login_image.webp'),
+                    ),
+                    const SizedBox(
+                      height: 40,
                     ),
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
