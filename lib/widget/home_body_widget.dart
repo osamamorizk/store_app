@@ -48,13 +48,39 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                     const SizedBox(
                       height: 5,
                     ),
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(16)),
-                      child: Image(
-                        fit: BoxFit.fill,
-                        height: 90,
-                        width: MediaQuery.of(context).size.width,
-                        image: const AssetImage('assets/sale.png'),
+                    SizedBox(
+                      height: 95,
+                      child: ListView(
+                        clipBehavior: Clip.none,
+                        scrollDirection: Axis.horizontal,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(right: 16),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16)),
+                              child: Image(
+                                fit: BoxFit.fill,
+                                height: 90,
+                                width: 300,
+                                image: AssetImage('assets/sale.png'),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 4),
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16)),
+                              child: Image(
+                                fit: BoxFit.fill,
+                                height: 90,
+                                width: 300,
+                                image: AssetImage('assets/banner1.jpg'),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(

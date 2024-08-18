@@ -73,8 +73,14 @@ class _CartViewState extends State<CartView> {
               child: Column(
                 children: [
                   Expanded(
-                      child: cubit.cartProducts.isNotEmpty
-                          ? ListView.builder(
+                      child: cubit.cartProducts.isEmpty
+                          ? const Center(
+                              child: Image(
+                                  height: 120,
+                                  width: 120,
+                                  image: AssetImage('assets/empty cart.png')),
+                            )
+                          : ListView.builder(
                               itemCount: cubit.cartProducts.length,
                               itemBuilder: (context, index) => Padding(
                                     padding:
@@ -90,12 +96,7 @@ class _CartViewState extends State<CartView> {
                                         },
                                         productModel:
                                             cubit.cartProducts[index]),
-                                  ))
-                          : const Center(
-                              child: Text(
-                              "Cart is empty",
-                              strutStyle: StrutStyle(fontSize: 40),
-                            ))),
+                                  ))),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: CartBuCustomButton(
